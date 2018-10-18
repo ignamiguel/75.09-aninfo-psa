@@ -1,0 +1,19 @@
+{
+  "name": "psa-time-tracker-ui",
+  "version": "1.0.0",
+  "description": "PSA Time Tracker",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ignamiguel/75.09-aninfo-psa.git"
+  },
+  "author": "ignamiguel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ignamiguel/75.09-aninfo-psa/issues"
+  },
+  "homepage": "https://github.com/ignamiguel/75.09-aninfo-psa#readme"
+}
