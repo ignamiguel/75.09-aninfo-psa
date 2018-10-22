@@ -1,0 +1,16 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "mysqlIDs": {
+    "host": "localhost",
+    "port": 3306,
+    "url": "",
+    "database": "timetracker",
+    "password": "password",
+    "name": "mysqlIDs",
+    "user": "root",
+    "connector": "mysql"
+  }
+}
