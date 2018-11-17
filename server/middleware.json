@@ -41,9 +41,19 @@
     }
   },
   "files": {
-    "loopback#static": {
-      "params": "$!../client"
-    }
+    "loopback#static": [
+      {
+        "name": "publicPath",
+        "paths": ["/"],
+        "params": "$!../client"
+      },
+      {
+        "name": "reactRouter",
+        "paths": ["*"],
+        "params": "$!../client/index.html",
+        "optional":true
+      }
+    ]
   },
   "final": {
     "loopback#urlNotFound": {}
