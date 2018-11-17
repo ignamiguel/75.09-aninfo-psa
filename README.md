@@ -19,6 +19,7 @@ The Application uses MySQL as datasource. A database called `timetracker` must b
 - Worker
 - Task
 - Hour
+
 A migration script that creates the tables is available under the `/resources` folder.
 
 ### Run Application
