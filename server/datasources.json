@@ -3,13 +3,13 @@
     "name": "db",
     "connector": "memory"
   },
-  "mysqlIDs": {
+  "mysql-localhost": {
     "host": "localhost",
     "port": 3306,
     "url": "",
     "database": "timetracker",
     "password": "password",
-    "name": "mysqlIDs",
+    "name": "mysql-localhost",
     "user": "root",
     "connector": "mysql"
   }

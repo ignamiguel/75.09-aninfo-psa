@@ -1,28 +1,57 @@
 {
   "name": "Task",
-  "plural": "Tasks",
+  "plural": "tasks",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "Title": {
+    "name": {
       "type": "string",
       "required": true
     },
-    "Description": {
-      "type": "string",
-      "required": true
+    "description": {
+      "type": "string"
     },
-    "Completed": {
-      "type": "boolean",
+    "type": {
+      "type": "string",
       "required": true,
-      "default": false
+      "default": "DEVELOPMENT"
+    },
+    "status": {
+      "type": "string",
+      "required": true,
+      "default": "OPEN"
+    },
+    "begin_date": {
+      "type": "date"
+    },
+    "end_date": {
+      "type": "date"
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "hours": {
+      "type": "referencesMany",
+      "model": "Hour",
+      "foreignKey": "hour_ids",
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
+    },
+    "worker": {
+      "type": "belongsTo",
+      "model": "Worker",
+      "foreignKey": "assigned_worker_id",
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
+    }
+  },
   "acls": [],
   "methods": {}
 }

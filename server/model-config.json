@@ -35,16 +35,16 @@
     "dataSource": "db",
     "public": false
   },
-  "Resource": {
-    "dataSource": "mysqlIDs",
-    "public": true
-  },
-  "WorkHours": {
-    "dataSource": "mysqlIDs",
+  "Worker": {
+    "dataSource": "mysql-localhost",
     "public": true
   },
   "Task": {
-    "dataSource": "mysqlIDs",
+    "dataSource": "mysql-localhost",
+    "public": true
+  },
+  "Hour": {
+    "dataSource": "mysql-localhost",
     "public": true
   }
 }

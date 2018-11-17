@@ -1,14 +1,18 @@
 {
-  "name": "WorkHours",
-  "plural": "WorkHours",
+  "name": "Worker",
+  "plural": "workers",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "Quantity": {
-      "type": "number",
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "last_name": {
+      "type": "string",
       "required": true
     }
   },
