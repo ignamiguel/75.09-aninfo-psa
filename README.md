@@ -23,7 +23,10 @@ The Application uses MySQL as datasource. A database called `timetracker` must b
 A migration script that creates the tables is available under the `/resources` folder.
 
 ### Run Application
-In order to run the application, the following command must be executed: `node .`
+In order to run the application, the following command must be executed: 
+```
+node .
+```
 #### API
 The Application is exposed in port **8080** and API endpoints are found under `api` path.
 #### Swagger
