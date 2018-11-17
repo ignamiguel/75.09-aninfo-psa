@@ -1,19 +1,41 @@
 {
-  "name": "psa-time-tracker-ui",
+  "name": "time-tracker",
   "version": "1.0.0",
-  "description": "PSA Time Tracker",
-  "main": "index.js",
+  "main": "server/server.js",
+  "engines": {
+    "node": ">=4"
+  },
   "scripts": {
-    "test": "npm test"
+    "lint": "eslint .",
+    "build": "cd client_src && npm run-script build && cd ..",
+    "start": "node .",
+    "test": "npm run e2etest",
+    "e2etest": "./node_modules/.bin/cucumber-js test/web/features/*.feature -f summary -f json:test/report/cucumber_report.json"
+  },
+  "dependencies": {
+    "chai": "^4.2.0",
+    "compression": "^1.0.3",
+    "cors": "^2.5.2",
+    "cucumber": "^5.0.2",
+    "helmet": "^3.10.0",
+    "loopback": "^3.22.0",
+    "loopback-boot": "^2.6.5",
+    "loopback-component-explorer": "^6.2.0",
+    "loopback-connector-mysql": "^5.3.1",
+    "serve-favicon": "^2.0.1",
+    "strong-error-handler": "^3.0.0",
+    "supertest": "^3.3.0",
+    "winston": "^3.1.0"
+  },
+  "devDependencies": {
+    "cucumber-html-reporter": "^4.0.4",
+    "eslint": "5.6.0",
+    "eslint-config-loopback": "^8.0.0"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ignamiguel/75.09-aninfo-psa.git"
+    "type": "",
+    "url": ""
   },
-  "author": "ignamiguel",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ignamiguel/75.09-aninfo-psa/issues"
-  },
-  "homepage": "https://github.com/ignamiguel/75.09-aninfo-psa#readme"
+  "license": "UNLICENSED",
+  "description": "time-tracker"
 }

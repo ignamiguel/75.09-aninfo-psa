@@ -1,0 +1,559 @@
+[
+  {
+    "description": "  As an user\n  I want to add hours to an existing task\n  So that I can record the progress of it",
+    "keyword": "Feature",
+    "name": "User can add hours to an existing task",
+    "line": 1,
+    "id": "user-can-add-hours-to-an-existing-task",
+    "tags": [],
+    "uri": "test/web/features/add-hour.feature",
+    "elements": [
+      {
+        "id": "user-can-add-hours-to-an-existing-task;get-hours-worked-in-a-task",
+        "keyword": "Scenario",
+        "line": 6,
+        "name": "Get hours worked in a task",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 7,
+            "name": "no hours worked on a task",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 55000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 8,
+            "name": "there are exactly 0 hours worked in the task by \"me\"",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 14000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "there are exactly 0 hours worked in the task",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "user-can-add-hours-to-an-existing-task;i-can-register-hours-worked-for-a-task",
+        "keyword": "Scenario",
+        "line": 11,
+        "name": "I can register hours worked for a task",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "name",
+                      "description",
+                      "type",
+                      "status",
+                      "begin_date",
+                      "assigned_worker_id"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "Name Test",
+                      "Description Test",
+                      "Type test",
+                      "Status Test",
+                      "2018-11-01",
+                      "1"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "a task",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 15000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 15,
+            "name": "\"I\" register hours with the quantity 8 and date of \"today\"",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1022000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 16,
+            "name": "there are exactly 8 hours worked in the task by \"me\"",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 17,
+            "name": "there are exactly 8 hours worked in the task",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 6000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "user-can-add-hours-to-an-existing-task;many-users-can-register-hours-worked-for-the-same-task",
+        "keyword": "Scenario",
+        "line": 19,
+        "name": "Many users can register hours worked for the same task",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "name",
+                      "description",
+                      "type",
+                      "status",
+                      "begin_date",
+                      "assigned_worker_id"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "Name Test",
+                      "Description Test",
+                      "Type test",
+                      "Status Test",
+                      "2018-11-01",
+                      "1"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "Given ",
+            "line": 20,
+            "name": "a task",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 7000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 23,
+            "name": "\"I\" register hours with the quantity 8 and date of \"today\"",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1016000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 24,
+            "name": "\"Someone else\" register hours with the quantity 8 and date of \"today\"",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1019000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 25,
+            "name": "there are exactly 8 hours worked in the task by \"me\"",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 7000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 26,
+            "name": "there are exactly 8 hours worked in the task by \"someone else\"",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 7000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 27,
+            "name": "there are exactly 16 hours worked in the task",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "user-can-add-hours-to-an-existing-task;hours-quantity-must-be-greater-than-zero",
+        "keyword": "Scenario",
+        "line": 29,
+        "name": "Hours quantity must be greater than zero",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "name",
+                      "description",
+                      "type",
+                      "status",
+                      "begin_date",
+                      "assigned_worker_id"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "Name Test",
+                      "Description Test",
+                      "Type test",
+                      "Status Test",
+                      "2018-11-01",
+                      "1"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "Given ",
+            "line": 30,
+            "name": "a task",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 33,
+            "name": "\"I\" register hours with the quantity 0 and date of \"today\"",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1020000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 34,
+            "name": "I get an error",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 35,
+            "name": "there are exactly 0 hours worked in the task by \"me\"",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 36,
+            "name": "there are exactly 0 hours worked in the task",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "user-can-add-hours-to-an-existing-task;hours-quantity-must-be-lower-or-equal-to-24",
+        "keyword": "Scenario",
+        "line": 38,
+        "name": "Hours quantity must be lower or equal to 24",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "name",
+                      "description",
+                      "type",
+                      "status",
+                      "begin_date",
+                      "assigned_worker_id"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "Name Test",
+                      "Description Test",
+                      "Type test",
+                      "Status Test",
+                      "2018-11-01",
+                      "1"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "Given ",
+            "line": 39,
+            "name": "a task",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 7000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 42,
+            "name": "\"I\" register hours with the quantity 25 and date of \"today\"",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1009000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 43,
+            "name": "I get an error",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 44,
+            "name": "there are exactly 0 hours worked in the task by \"me\"",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 45,
+            "name": "there are exactly 0 hours worked in the task",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "user-can-add-hours-to-an-existing-task;hours-date-can't-be-from-the-future",
+        "keyword": "Scenario",
+        "line": 47,
+        "name": "Hours date can't be from the future",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "name",
+                      "description",
+                      "type",
+                      "status",
+                      "begin_date",
+                      "assigned_worker_id"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "Name Test",
+                      "Description Test",
+                      "Type test",
+                      "Status Test",
+                      "2018-11-01",
+                      "2"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "Given ",
+            "line": 48,
+            "name": "a task",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 7000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 51,
+            "name": "\"I\" register hours with the quantity 8 and date of \"tomorrow\"",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1010000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 52,
+            "name": "I get an error",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 53,
+            "name": "there are exactly 0 hours worked in the task by \"me\"",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 54,
+            "name": "there are exactly 0 hours worked in the task",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
