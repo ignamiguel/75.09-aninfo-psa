@@ -7,6 +7,7 @@ var logger = require('../../../../server/lib/utils/logger.js');
 
 const { Given, When, Then } = require('cucumber')
 const worker_id_me = 1;
+const worker_id_someone_else = 2;
 
 Given('no hours worked on a task', function(done) {
 	var self = this;
@@ -58,15 +59,20 @@ Given('a task', function(table, done) {
 	});
 })
 
-When('I register hours with the quantity {int} and date of today', function(quantity, done) {
+When('{string} register hours with the quantity {int} and date of {string}', function(who, hours, when, done) {	
+	var quantity = hours;
+	var date = (when == 'today') ? moment() : (when == 'tomorrow' ? moment().add(1, 'days') : moment());
+	var worker_id = (who === 'I') ? worker_id_me : worker_id_someone_else;
+
 	var self = this;
 	var task = self.getTask();
+
 	self.request
 	      	.post('/api/tasks/' + task.id + '/hours')
 	      	.send({ 
 				quantity: quantity, 
-				date: moment().format('YYYY-MM-DD'),
-				worker_id: task.assigned_worker_id
+				date: date,
+				worker_id: worker_id
 	      	})
 	      	.expect('Content-Type', /json/)
 	      	.end(function(err, res) {  
@@ -85,7 +91,36 @@ Then('I get an error', function() {
 	assert.equal(statusCode, 422, '');
 })
 
-Then('there are exactly {int} hours worked in the task by me', function(expected_hours, done) {
+Then('there are exactly {int} hours worked in the task by {string}', function(quantity, who, done) {
+	var expected_hours = quantity;
+	var worker_id = (who === 'me') ? worker_id_me : worker_id_someone_else;
+	
+	var self = this;
+	var task = self.getTask();
+
+	self.request
+	      	.get('/api/tasks/' + task.id + '/hours')
+			.expect('Content-Type', /json/)
+			.expect(200)
+	      	.end(function(err, res) {  
+	        	if (err) {
+					throw err;
+				} else {
+					var hours_array = res.body;
+					var total_hours = 0;
+					hours_array.forEach(hour => {
+						if (hour.worker_id === worker_id) {
+							assert.isNumber(hour.quantity, 'Hours quantity should be a number');
+							total_hours += hour.quantity;
+						}
+					});
+					assert.equal(total_hours, expected_hours, 'Worked hours should be ' + expected_hours + ' but found ' + total_hours + ' instead.')
+	        		done();
+				}
+	      	});
+})
+
+Then('there are exactly {int} hours worked in the task', function(expected_hours, done) {
 	var self = this;
 	var task = self.getTask();
 	self.request
@@ -100,7 +135,6 @@ Then('there are exactly {int} hours worked in the task by me', function(expected
 					var total_hours = 0;
 					hours_array.forEach(hour => {
 						assert.isNumber(hour.quantity, 'Hours quantity should be a number');
-						assert.equal(hour.worker_id, task.assigned_worker_id, 'Hours should be related to the correct worker');
 						total_hours += hour.quantity;
 					});
 					assert.equal(total_hours, expected_hours, 'Worked hours should be ' + expected_hours + ' but found ' + total_hours + ' instead.')
