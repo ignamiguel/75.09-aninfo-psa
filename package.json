@@ -13,6 +13,7 @@
     "e2etest": "./node_modules/.bin/cucumber-js test/web/features/*.feature -f summary -f json:test/report/cucumber_report.json"
   },
   "dependencies": {
+    "ajv": "^6.5.5",
     "chai": "^4.2.0",
     "compression": "^1.0.3",
     "cors": "^2.5.2",
@@ -22,6 +23,7 @@
     "loopback-boot": "^2.6.5",
     "loopback-component-explorer": "^6.2.0",
     "loopback-connector-mysql": "^5.3.1",
+    "moment": "^2.22.2",
     "serve-favicon": "^2.0.1",
     "strong-error-handler": "^3.0.0",
     "supertest": "^3.3.0",
