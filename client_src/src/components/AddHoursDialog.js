@@ -14,6 +14,7 @@ import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
+import config from '../config.json';
 
 import moment from 'moment';
 import axios from 'axios';
@@ -125,7 +126,7 @@ class AddHoursDialog extends Component {
     
             axios.request({
                 method: 'post',
-                url: 'http://localhost:8080/api/tasks/' + task + '/hours',
+                url: `${config.apiURL}/api/tasks/` + task + '/hours',
                 data: data
             }).then(() => {
                 window.location.reload();

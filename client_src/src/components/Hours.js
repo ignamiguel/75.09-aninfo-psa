@@ -12,6 +12,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Dialog from '@material-ui/core/Dialog';
+import config from '../config.json';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -65,7 +66,7 @@ class Hours extends Component{
 
     getHours() {
         let filter = '{"where":{"assigned_worker_id":"' + workerId + '"}}';
-        axios.get('http://localhost:8080/api/tasks?filter=' + filter)
+        axios.get(`${config.apiURL}/api/tasks?filter=` + filter)
             .then(response => {
                 response.data.forEach(element => {
                     this.setState({
@@ -73,7 +74,7 @@ class Hours extends Component{
                     });
 
                     element.hour_ids.forEach(hour => {
-                        axios.get('http://localhost:8080/api/tasks/' + element.id + '/hours/' + hour)
+                        axios.get(`${config.apiURL}/api/tasks/` + element.id + '/hours/' + hour)
                             .then(response => {
                                 this.setState({
                                     hours: [...this.state.hours, {id: response.data.id, name: element.name, status: element.status, date: moment(response.data.date), quantity: response.data.quantity}]
