@@ -22,13 +22,13 @@ class About extends Component{
     return (
         <div>
             <Typography variant="h3" color="inherit" noWrap className={classes.h3}>
-                About
+                Información
             </Typography>
             <Typography variant="subtitle1" color="inherit" className={classes.subtitle1}>
                 Esta aplicación se encuentra en desarrollo.
             </Typography>
             <Typography variant="subtitle1" color="inherit" className={classes.subtitle1}>
-                Actualmente solo tiene una aplicación para la carga de Horas. Conocida como Time Tracker. Sigo escribiendo a ver donde se corta.
+                Actualmente solo tiene una aplicación para la carga de Horas conocida como Time Tracker.
             </Typography>
         </div>
     )

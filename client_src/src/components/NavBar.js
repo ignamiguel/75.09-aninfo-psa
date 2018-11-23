@@ -125,17 +125,17 @@ class NavBar extends Component{
                     <IconButton onClick={this.handleDrawerClose}>
                         {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
                     </IconButton>
-                    <ListItem button key='Close Menu' onClick={this.handleDrawerClose}>
-                        <ListItemText primary='Close Menu' />
+                    <ListItem button key='Cerrar Menú' onClick={this.handleDrawerClose}>
+                        <ListItemText primary='Cerrar Menú' />
                     </ListItem>
                 </div>
                 <Divider />
                     <List>
-                        <NavBarOption text='Hours' icon= {<TimerIcon />} link="/"/>
+                        <NavBarOption text='Horas' icon= {<TimerIcon />} link="/"/>
                     </List>
                 <Divider />
                     <List>
-                        <NavBarOption text='About' icon= {<HelpIcon />} link="/about"/>
+                        <NavBarOption text='Información' icon= {<HelpIcon />} link="/about"/>
                     </List>
             </Drawer>
             </div>
