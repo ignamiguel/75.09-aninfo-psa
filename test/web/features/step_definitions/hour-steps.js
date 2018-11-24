@@ -1,15 +1,13 @@
 'use strict';
 var moment = require('moment');
 var async = require('async');
-var lodash = require('lodash');
 var assert = require('chai').assert;
-var logger = require('../../../../server/lib/utils/logger.js');
 
 const { Given, When, Then } = require('cucumber')
 const worker_id_me = 1;
 const worker_id_someone_else = 2;
 
-Given('no hours worked on a task', function(done) {
+Given('no hay horas trabajadas en una tarea', function(done) {
 	var self = this;
 	self.request
 		.post('/api/tasks')
@@ -26,13 +24,13 @@ Given('no hours worked on a task', function(done) {
 				throw err;
 			} else {
 				self.addTask(res.body);
-				self.addStatusCode(res.statusCode);
+				self.addErrorMessage(res.errorMessage);
 				done();
 			}
 		});
 })
 
-Given('a task', function(table, done) {
+Given('una tarea', function(table, done) {
 	var self = this;
 	var taskList = table.hashes();
 	async.each(taskList, function(task) {
@@ -52,23 +50,23 @@ Given('a task', function(table, done) {
 					throw err;
 				} else {
 					self.addTask(res.body);
-					self.addStatusCode(res.statusCode);
+					self.addErrorMessage(res.statusCode);
 					done();
 				}
 			});
 	});
 })
 
-When('{string} register hours with the quantity {int} and date of {string}', function(who, hours, when, done) {	
+When('{string} cargo {int} horas el día de {string}', function(who, hours, when, done) {	
 	var quantity = hours;
-	var date = (when == 'today') ? moment() : (when == 'tomorrow' ? moment().add(1, 'days') : moment());
-	var worker_id = (who === 'I') ? worker_id_me : worker_id_someone_else;
+	var date = (when == 'hoy') ? moment() : (when == 'mañana' ? moment().add(1, 'days') : moment());
+	var worker_id = (who === 'Yo') ? worker_id_me : worker_id_someone_else;
 
 	var self = this;
 	var task = self.getTask();
 
 	self.request
-	      	.post('/api/tasks/' + task.id + '/hours')
+	      	.post('/api/tasks/' + task.id + '/loadHours')
 	      	.send({ 
 				quantity: quantity, 
 				date: date,
@@ -76,34 +74,38 @@ When('{string} register hours with the quantity {int} and date of {string}', fun
 	      	})
 	      	.expect('Content-Type', /json/)
 	      	.end(function(err, res) {  
-	        	if (err) {
+				if (err) {
 					throw err;
 				} else {
-					self.addStatusCode(res.statusCode);
+					if (res.body.error !== undefined) {
+						self.addErrorMessage(res.body.error.message);
+					}
 					done();
 				}
 	      	});
 });
 
-Then('I get an error', function() {
+Then('recibo un error {string}', function(expectedErrorMessage, done) {
 	var self = this;
-	var statusCode = self.getStatusCode();
-	assert.equal(statusCode, 422, '');
+	var errorMessage = self.getErrorMessage();
+	assert.equal(expectedErrorMessage, errorMessage, 'Error message should be: ' + expectedErrorMessage + ' but found ' + errorMessage + ' instead.');
+	done();
 })
 
-Then('there are exactly {int} hours worked in the task by {string}', function(quantity, who, done) {
+Then('hay exactamente {int} horas trabajadas en la tarea por {string}', function(quantity, who, done) {
 	var expected_hours = quantity;
-	var worker_id = (who === 'me') ? worker_id_me : worker_id_someone_else;
+	var worker_id = (who === 'mi') ? worker_id_me : worker_id_someone_else;
 	
 	var self = this;
 	var task = self.getTask();
+	var taskFilter = '{"where":{"task_id":"' + task.id + '"}}';
 
 	self.request
-	      	.get('/api/tasks/' + task.id + '/hours')
+	      	.get('/api/hours?filter=' + taskFilter)
 			.expect('Content-Type', /json/)
 			.expect(200)
 	      	.end(function(err, res) {  
-	        	if (err) {
+				if (err) {
 					throw err;
 				} else {
 					var hours_array = res.body;
@@ -120,11 +122,13 @@ Then('there are exactly {int} hours worked in the task by {string}', function(qu
 	      	});
 })
 
-Then('there are exactly {int} hours worked in the task', function(expected_hours, done) {
+Then('hay exactamente {int} horas trabajadas en la tarea', function(expected_hours, done) {
 	var self = this;
 	var task = self.getTask();
+	var taskFilter = '{"where":{"task_id":"' + task.id + '"}}';
+
 	self.request
-	      	.get('/api/tasks/' + task.id + '/hours')
+	      	.get('/api/hours?filter=' + taskFilter)
 			.expect('Content-Type', /json/)
 			.expect(200)
 	      	.end(function(err, res) {  

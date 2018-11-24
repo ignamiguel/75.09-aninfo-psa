@@ -106,11 +106,11 @@ class AddHoursDialog extends Component {
         closeFunction();
     }
 
-    handleSave = (task, data, closeFunction, event) => {        
+    handleSave = (data, closeFunction, event) => {        
         let error = false;
 
-        if (task === '') {
-            this.validateTask(task);
+        if (data.task_id === '') {
+            this.validateTask(data.task_id);
             error = true;
         }
         
@@ -125,12 +125,15 @@ class AddHoursDialog extends Component {
     
             axios.request({
                 method: 'post',
-                url: `${config.apiURL}/api/tasks/` + task + '/hours',
+                url: `${config.apiURL}/api/tasks/` + data.task_id + '/loadHours',
                 data: data
             }).then(() => {
+                closeFunction();
                 window.location.reload();
-            }).catch(err => console.log(err));
-            closeFunction();
+            }).catch(err => {
+                this.setState({ taskErrorText: err.response.data.error.message });
+            });
+            
         }
     };
     
@@ -206,11 +209,11 @@ class AddHoursDialog extends Component {
                             color="primary"
                             onClick={this.handleSave.bind(
                                     null, 
-                                    this.state.task,
                                     {
                                         "quantity": this.state.quantity,
                                         "date": this.state.date,
-                                        "worker_id": workerId
+                                        "worker_id": workerId,
+                                        "task_id": this.state.task
                                     },
                                     closeFunction)}>
                             Crear

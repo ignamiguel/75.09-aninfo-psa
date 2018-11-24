@@ -27,6 +27,15 @@
         "validate": true,
         "forceId": false
       }
+    },
+    "task": {
+      "type": "belongsTo",
+      "model": "Task",
+      "foreignKey": "task_id",
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
     }
   },
   "acls": [],

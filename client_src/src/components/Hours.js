@@ -67,19 +67,20 @@ class Hours extends Component{
     getHours() {
         let task_filter = '{"where":{"assigned_worker_id":"' + workerId + '"}}';
         axios.get(`${config.apiURL}/api/tasks?filter=` + task_filter)
-            .then(response => {
-                    response.data.forEach(task => {
+            .then(tasks => {
+                    tasks.data.forEach(task => {
                         this.setState({
                             tasks: [...this.state.tasks, task]
                         });
-                        task.hour_ids.forEach(hour => {
-                            axios.get(`${config.apiURL}/api/tasks/` + task.id + '/hours/' + hour)
-                                .then(response => {
+                        let hour_filter = '{"where":{"task_id":"' + task.id + '"}}';
+                        axios.get(`${config.apiURL}/api/hours?filter=` + hour_filter)
+                            .then(hours => {
+                                hours.data.forEach(hour => {
                                     this.setState({
-                                        hours: [...this.state.hours, {id: response.data.id, name: task.name, status: task.status, date: moment(response.data.date), quantity: response.data.quantity}]
+                                        hours: [...this.state.hours, {id: hour.id, name: task.name, status: task.status, date: moment(hour.date), quantity: hour.quantity}]
                                     }, () => this.setState({ isFetchingHours: true }))
-                            })
-                        })
+                                })
+                            });
                     });
             });
     }
