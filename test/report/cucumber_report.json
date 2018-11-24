@@ -1,18 +1,18 @@
 [
   {
-    "description": "  As an user\n  I want to add hours to an existing task\n  So that I can record the progress of it",
+    "description": "  Cómo Usuario del Backlog\n  Quiero cargar las horas de mi trabajo a una tarea\n  Para poder controlar la asignación de mis tareas y el avance de ellas.",
     "keyword": "Feature",
-    "name": "User can add hours to an existing task",
+    "name": "Carga de Horas",
     "line": 1,
-    "id": "user-can-add-hours-to-an-existing-task",
+    "id": "carga-de-horas",
     "tags": [],
     "uri": "test/web/features/add-hour.feature",
     "elements": [
       {
-        "id": "user-can-add-hours-to-an-existing-task;get-hours-worked-in-a-task",
+        "id": "carga-de-horas;ver-horas-trabajadas-en-una-tarea",
         "keyword": "Scenario",
         "line": 6,
-        "name": "Get hours worked in a task",
+        "name": "Ver horas trabajadas en una tarea",
         "tags": [],
         "type": "scenario",
         "steps": [
@@ -20,48 +20,48 @@
             "arguments": [],
             "keyword": "Given ",
             "line": 7,
-            "name": "no hours worked on a task",
+            "name": "no hay horas trabajadas en una tarea",
             "match": {
               "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
             },
             "result": {
               "status": "passed",
-              "duration": 55000000
+              "duration": 48000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 8,
-            "name": "there are exactly 0 hours worked in the task by \"me\"",
+            "name": "hay exactamente 0 horas trabajadas en la tarea por \"mi\"",
             "match": {
               "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
             },
             "result": {
               "status": "passed",
-              "duration": 14000000
+              "duration": 11000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 9,
-            "name": "there are exactly 0 hours worked in the task",
+            "name": "hay exactamente 0 horas trabajadas en la tarea",
             "match": {
               "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
             },
             "result": {
               "status": "passed",
-              "duration": 5000000
+              "duration": 6000000
             }
           }
         ]
       },
       {
-        "id": "user-can-add-hours-to-an-existing-task;i-can-register-hours-worked-for-a-task",
+        "id": "carga-de-horas;puedo-cargar-horas-a-una-tarea-a-la-que-estoy-asignado",
         "keyword": "Scenario",
         "line": 11,
-        "name": "I can register hours worked for a task",
+        "name": "Puedo cargar horas a una tarea a la que estoy asignado",
         "tags": [],
         "type": "scenario",
         "steps": [
@@ -94,46 +94,33 @@
             ],
             "keyword": "Given ",
             "line": 12,
-            "name": "a task",
+            "name": "una tarea",
             "match": {
               "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
             },
             "result": {
               "status": "passed",
-              "duration": 15000000
+              "duration": 16000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 15,
-            "name": "\"I\" register hours with the quantity 8 and date of \"today\"",
+            "name": "\"Yo\" cargo 8 horas el día de \"hoy\"",
             "match": {
               "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
             },
             "result": {
               "status": "passed",
-              "duration": 1022000000
+              "duration": 1024000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 16,
-            "name": "there are exactly 8 hours worked in the task by \"me\"",
-            "match": {
-              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 8000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 17,
-            "name": "there are exactly 8 hours worked in the task",
+            "name": "hay exactamente 8 horas trabajadas en la tarea por \"mi\"",
             "match": {
               "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
             },
@@ -141,14 +128,27 @@
               "status": "passed",
               "duration": 6000000
             }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 17,
+            "name": "hay exactamente 8 horas trabajadas en la tarea",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5000000
+            }
           }
         ]
       },
       {
-        "id": "user-can-add-hours-to-an-existing-task;many-users-can-register-hours-worked-for-the-same-task",
+        "id": "carga-de-horas;no-puedo-cargar-horas-a-una-tarea-a-la-que-no-estoy-asignado",
         "keyword": "Scenario",
         "line": 19,
-        "name": "Many users can register hours worked for the same task",
+        "name": "No puedo cargar horas a una tarea a la que no estoy asignado",
         "tags": [],
         "type": "scenario",
         "steps": [
@@ -181,20 +181,20 @@
             ],
             "keyword": "Given ",
             "line": 20,
-            "name": "a task",
+            "name": "una tarea",
             "match": {
               "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
             },
             "result": {
               "status": "passed",
-              "duration": 7000000
+              "duration": 6000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 23,
-            "name": "\"I\" register hours with the quantity 8 and date of \"today\"",
+            "name": "\"Yo\" cargo 8 horas el día de \"hoy\"",
             "match": {
               "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
             },
@@ -207,120 +207,20 @@
             "arguments": [],
             "keyword": "When ",
             "line": 24,
-            "name": "\"Someone else\" register hours with the quantity 8 and date of \"today\"",
+            "name": "\"Cómo otra persona\" cargo 8 horas el día de \"hoy\"",
             "match": {
               "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
             },
             "result": {
               "status": "passed",
-              "duration": 1019000000
+              "duration": 8000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 25,
-            "name": "there are exactly 8 hours worked in the task by \"me\"",
-            "match": {
-              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 7000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 26,
-            "name": "there are exactly 8 hours worked in the task by \"someone else\"",
-            "match": {
-              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 7000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 27,
-            "name": "there are exactly 16 hours worked in the task",
-            "match": {
-              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 5000000
-            }
-          }
-        ]
-      },
-      {
-        "id": "user-can-add-hours-to-an-existing-task;hours-quantity-must-be-greater-than-zero",
-        "keyword": "Scenario",
-        "line": 29,
-        "name": "Hours quantity must be greater than zero",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "arguments": [
-              {
-                "rows": [
-                  {
-                    "cells": [
-                      "name",
-                      "description",
-                      "type",
-                      "status",
-                      "begin_date",
-                      "assigned_worker_id"
-                    ]
-                  },
-                  {
-                    "cells": [
-                      "Name Test",
-                      "Description Test",
-                      "Type test",
-                      "Status Test",
-                      "2018-11-01",
-                      "1"
-                    ]
-                  }
-                ]
-              }
-            ],
-            "keyword": "Given ",
-            "line": 30,
-            "name": "a task",
-            "match": {
-              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 5000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 33,
-            "name": "\"I\" register hours with the quantity 0 and date of \"today\"",
-            "match": {
-              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1020000000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 34,
-            "name": "I get an error",
+            "name": "recibo un error \"Sólo se puede cargar horas a la tarea asignada.\"",
             "match": {
               "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
             },
@@ -331,21 +231,34 @@
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 35,
-            "name": "there are exactly 0 hours worked in the task by \"me\"",
+            "line": 26,
+            "name": "hay exactamente 8 horas trabajadas en la tarea por \"mi\"",
             "match": {
               "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
             },
             "result": {
               "status": "passed",
-              "duration": 5000000
+              "duration": 4000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 36,
-            "name": "there are exactly 0 hours worked in the task",
+            "line": 27,
+            "name": "hay exactamente 0 horas trabajadas en la tarea por \"otra persona\"",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 7000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 28,
+            "name": "hay exactamente 8 horas trabajadas en la tarea",
             "match": {
               "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
             },
@@ -357,10 +270,10 @@
         ]
       },
       {
-        "id": "user-can-add-hours-to-an-existing-task;hours-quantity-must-be-lower-or-equal-to-24",
+        "id": "carga-de-horas;la-cantidad-de-horas-tiene-que-ser-mayor-a-cero",
         "keyword": "Scenario",
-        "line": 38,
-        "name": "Hours quantity must be lower or equal to 24",
+        "line": 30,
+        "name": "La cantidad de horas tiene que ser mayor a cero",
         "tags": [],
         "type": "scenario",
         "steps": [
@@ -392,34 +305,34 @@
               }
             ],
             "keyword": "Given ",
-            "line": 39,
-            "name": "a task",
+            "line": 31,
+            "name": "una tarea",
             "match": {
               "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
             },
             "result": {
               "status": "passed",
-              "duration": 7000000
+              "duration": 6000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 42,
-            "name": "\"I\" register hours with the quantity 25 and date of \"today\"",
+            "line": 34,
+            "name": "\"Yo\" cargo 0 horas el día de \"hoy\"",
             "match": {
               "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
             },
             "result": {
               "status": "passed",
-              "duration": 1009000000
+              "duration": 3000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 43,
-            "name": "I get an error",
+            "line": 35,
+            "name": "recibo un error \"Las horas cargadas debe ser mayor a 0 y menor o igual a 24.\"",
             "match": {
               "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
             },
@@ -430,36 +343,36 @@
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 44,
-            "name": "there are exactly 0 hours worked in the task by \"me\"",
+            "line": 36,
+            "name": "hay exactamente 0 horas trabajadas en la tarea por \"mi\"",
             "match": {
               "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
             },
             "result": {
               "status": "passed",
-              "duration": 5000000
+              "duration": 4000000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 45,
-            "name": "there are exactly 0 hours worked in the task",
+            "line": 37,
+            "name": "hay exactamente 0 horas trabajadas en la tarea",
             "match": {
               "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
             },
             "result": {
               "status": "passed",
-              "duration": 8000000
+              "duration": 6000000
             }
           }
         ]
       },
       {
-        "id": "user-can-add-hours-to-an-existing-task;hours-date-can't-be-from-the-future",
+        "id": "carga-de-horas;la-cantidad-de-horas-tiene-que-ser-menor-o-igual-a-24",
         "keyword": "Scenario",
-        "line": 47,
-        "name": "Hours date can't be from the future",
+        "line": 39,
+        "name": "La cantidad de horas tiene que ser menor o igual a 24",
         "tags": [],
         "type": "scenario",
         "steps": [
@@ -484,41 +397,41 @@
                       "Type test",
                       "Status Test",
                       "2018-11-01",
-                      "2"
+                      "1"
                     ]
                   }
                 ]
               }
             ],
             "keyword": "Given ",
-            "line": 48,
-            "name": "a task",
+            "line": 40,
+            "name": "una tarea",
             "match": {
               "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
             },
             "result": {
               "status": "passed",
-              "duration": 7000000
+              "duration": 5000000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 51,
-            "name": "\"I\" register hours with the quantity 8 and date of \"tomorrow\"",
+            "line": 43,
+            "name": "\"Yo\" cargo 25 horas el día de \"hoy\"",
             "match": {
               "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
             },
             "result": {
               "status": "passed",
-              "duration": 1010000000
+              "duration": 3000000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 52,
-            "name": "I get an error",
+            "line": 44,
+            "name": "recibo un error \"Las horas cargadas debe ser mayor a 0 y menor o igual a 24.\"",
             "match": {
               "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
             },
@@ -529,8 +442,232 @@
           {
             "arguments": [],
             "keyword": "And ",
+            "line": 45,
+            "name": "hay exactamente 0 horas trabajadas en la tarea por \"mi\"",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 46,
+            "name": "hay exactamente 0 horas trabajadas en la tarea",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "carga-de-horas;la-cantidad-de-horas-por-tarea-por-día-no-puede-superar-las-24-horas",
+        "keyword": "Scenario",
+        "line": 48,
+        "name": "La cantidad de horas por tarea por día no puede superar las 24 horas",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "name",
+                      "description",
+                      "type",
+                      "status",
+                      "begin_date",
+                      "assigned_worker_id"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "Name Test",
+                      "Description Test",
+                      "Type test",
+                      "Status Test",
+                      "2018-11-01",
+                      "1"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "Given ",
+            "line": 49,
+            "name": "una tarea",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 52,
+            "name": "\"Yo\" cargo 12 horas el día de \"hoy\"",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1014000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
             "line": 53,
-            "name": "there are exactly 0 hours worked in the task by \"me\"",
+            "name": "\"Yo\" cargo 12 horas el día de \"hoy\"",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1018000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 54,
+            "name": "\"Yo\" cargo 1 horas el día de \"hoy\"",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 55,
+            "name": "recibo un error \"Sólo se puede cargar hasta 24 horas para una tarea por día.\"",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 56,
+            "name": "hay exactamente 24 horas trabajadas en la tarea por \"mi\"",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 6000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 57,
+            "name": "hay exactamente 24 horas trabajadas en la tarea",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "carga-de-horas;la-fecha-no-puede-ser-del-futuro",
+        "keyword": "Scenario",
+        "line": 59,
+        "name": "La fecha no puede ser del futuro",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "name",
+                      "description",
+                      "type",
+                      "status",
+                      "begin_date",
+                      "assigned_worker_id"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "Name Test",
+                      "Description Test",
+                      "Type test",
+                      "Status Test",
+                      "2018-11-01",
+                      "1"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "Given ",
+            "line": 60,
+            "name": "una tarea",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 63,
+            "name": "\"Yo\" cargo 8 horas el día de \"mañana\"",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 64,
+            "name": "recibo un error \"No se pueden cargar horas con una fecha futura.\"",
+            "match": {
+              "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 65,
+            "name": "hay exactamente 0 horas trabajadas en la tarea por \"mi\"",
             "match": {
               "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
             },
@@ -542,8 +679,8 @@
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 54,
-            "name": "there are exactly 0 hours worked in the task",
+            "line": 66,
+            "name": "hay exactamente 0 horas trabajadas en la tarea",
             "match": {
               "location": "Repos/75.09-aninfo-psa/node_modules/cucumber/lib/support_code_library_builder/build_helpers.js:141"
             },

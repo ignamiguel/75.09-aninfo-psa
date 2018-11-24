@@ -33,15 +33,6 @@
   },
   "validations": [],
   "relations": {
-    "hours": {
-      "type": "referencesMany",
-      "model": "Hour",
-      "foreignKey": "hour_ids",
-      "options": {
-        "validate": true,
-        "forceId": false
-      }
-    },
     "worker": {
       "type": "belongsTo",
       "model": "Worker",

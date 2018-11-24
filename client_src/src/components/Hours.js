@@ -65,24 +65,24 @@ class Hours extends Component{
     }
 
     getHours() {
-        let filter = '{"where":{"assigned_worker_id":"' + workerId + '"}}';
-        axios.get(`${config.apiURL}/api/tasks?filter=` + filter)
-            .then(response => {
-                response.data.forEach(element => {
-                    this.setState({
-                        tasks: [...this.state.tasks, element]
+        let task_filter = '{"where":{"assigned_worker_id":"' + workerId + '"}}';
+        axios.get(`${config.apiURL}/api/tasks?filter=` + task_filter)
+            .then(tasks => {
+                    tasks.data.forEach(task => {
+                        this.setState({
+                            tasks: [...this.state.tasks, task]
+                        });
+                        let hour_filter = '{"where":{"task_id":"' + task.id + '"}}';
+                        axios.get(`${config.apiURL}/api/hours?filter=` + hour_filter)
+                            .then(hours => {
+                                hours.data.forEach(hour => {
+                                    this.setState({
+                                        hours: [...this.state.hours, {id: hour.id, name: task.name, status: task.status, date: moment(hour.date), quantity: hour.quantity}]
+                                    }, () => this.setState({ isFetchingHours: true }))
+                                })
+                            });
                     });
-
-                    element.hour_ids.forEach(hour => {
-                        axios.get(`${config.apiURL}/api/tasks/` + element.id + '/hours/' + hour)
-                            .then(response => {
-                                this.setState({
-                                    hours: [...this.state.hours, {id: response.data.id, name: element.name, status: element.status, date: moment(response.data.date), quantity: response.data.quantity}]
-                                }, () => this.setState({ isFetchingHours: true }))
-                        })
-                    })
-                });
-            })
+            });
     }
 
     handleOpenHourModal = () => {
@@ -92,6 +92,60 @@ class Hours extends Component{
     handleCloseHourModal = () => {
         this.setState({ hoursModal: false });
     };
+
+    formatHour(hour) {
+        return moment(hour).add(3, 'hours').format('YYYY-MM-DD');
+    }
+
+    groupHours() {
+        let groupedHours = [];
+        if (this.state.isFetchingHours) {
+            this.state.hours.forEach((hour) => {
+                let transformedHour = this.formatHour(hour.date);
+                if (groupedHours.length === 0) {
+                    groupedHours.push({
+                        "id": hour.id,
+                        "name": hour.name,
+                        "status": hour.status,
+                        "date": transformedHour,
+                        "quantity": hour.quantity
+                    });
+                } else {
+                    let hourFound = false;
+                    groupedHours.forEach(groupedHour => {
+                        if (((groupedHour.date) === transformedHour) && (groupedHour.name === hour.name)) {
+                            hourFound = true;
+                            groupedHour.quantity += hour.quantity;
+                        }
+                    });
+                    if (!hourFound) {
+                        groupedHours.push({
+                            id: hour.id,
+                            name: hour.name,
+                            status: hour.status,
+                            date: transformedHour,
+                            quantity: hour.quantity
+                        });
+                    }
+                }                
+            });
+            groupedHours.sort((a, b) => {
+                if (a.name !== b.name) {
+                    if (a.name > b.name) {
+                        return -1;
+                    } else {
+                        return 1;
+                    }
+                }
+                if (a.date >= b.date) {
+                    return -1;
+                } else {
+                    return 1;
+                }
+            });
+        }
+        return groupedHours;
+    }
 
     render() {
         const { classes } = this.props;
@@ -111,7 +165,7 @@ class Hours extends Component{
             </Dialog>)
         }
 
-        const hours = this.state.hours.map((hour, i) => {
+        const hours = this.groupHours().map((hour, i) => {
             return(
                 <HoursRowItem item={hour} key={hour.id}/>
             )
@@ -120,16 +174,16 @@ class Hours extends Component{
         return (
             <div>
                 <Typography variant="h3" color="inherit" className={classes.h3}>
-                    Hours
+                    Horas
                 </Typography>
                 <Paper className={classes.root}>
                     <Table className={classes.table}>
                         <TableHead>
                             <TableRow>
-                                <TableCell>Task Name</TableCell>
-                                <TableCell>Status</TableCell>
-                                <TableCell>Date</TableCell>
-                                <TableCell>Hours</TableCell>
+                                <TableCell>Tarea</TableCell>
+                                <TableCell>Estado</TableCell>
+                                <TableCell>Fecha</TableCell>
+                                <TableCell>Horas</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>

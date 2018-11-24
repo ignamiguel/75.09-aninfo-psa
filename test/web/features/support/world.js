@@ -10,7 +10,7 @@ class CustomWorld {
 		this.app = app;
 		this.request = supertest(app);
 		this.task = null;
-		this.statusCode = null;
+		this.errorMessage = null;
   	}
 
 	addTask(task) {
@@ -25,12 +25,12 @@ class CustomWorld {
 		this.task = null;
 	}
 
-	addStatusCode(statusCode) {
-		this.statusCode = statusCode;
+	addErrorMessage(errorMessage) {
+		this.errorMessage = errorMessage;
 	}
 
-	getStatusCode() {
-		return this.statusCode;
+	getErrorMessage() {
+		return this.errorMessage;
 	}
 }
 

@@ -12,7 +12,7 @@ class HoursRowItem extends Component{
                     {name}
                 </TableCell>
                 <TableCell>{status}</TableCell>
-                <TableCell>{date.add(3, 'hours').format('YYYY-MM-DD')}</TableCell>
+                <TableCell>{date}</TableCell>
                 <TableCell>{quantity}</TableCell>
             </TableRow>
         )

@@ -59,8 +59,7 @@ class AddHoursDialog extends Component {
 
     validateTask(value) {
         if (value === '') {
-            console.log("Task is empty");
-            this.setState({ taskErrorText: 'Task is mandatory' })
+            this.setState({ taskErrorText: 'Tarea es obligatoria' })
         } else {
             this.setState({ taskErrorText: '' })
         }
@@ -68,9 +67,9 @@ class AddHoursDialog extends Component {
 
     validateQuantity(element) {
         if (element.value <= 0) {
-            this.setState({ quantityErrorText: 'Quantity must be bigger than 0.' })
+            this.setState({ quantityErrorText: 'Cantidad debe ser mayor a 0.' })
         } else if (element.value > 24) {
-            this.setState({ quantityErrorText: 'Quantity can\'t exceed 24 hours.'})
+            this.setState({ quantityErrorText: 'Cantidad no puede superar 24 horas.'})
         } else {
             this.setState({ quantityErrorText: '' })
         }
@@ -78,9 +77,9 @@ class AddHoursDialog extends Component {
 
     validateDate(element) {
         if (element.value === '') {
-            this.setState({ dateErrorText: 'Date is mandatory.' });
+            this.setState({ dateErrorText: 'Fecha es obligatoria.' });
         } else if (element.value > moment().format('YYYY-MM-DD')) {
-            this.setState({ dateErrorText: 'Date can\'t be from the future' })
+            this.setState({ dateErrorText: 'Fecha no puede superar la fecha actual.' })
         } else {
             this.setState({ dateErrorText: '' })
         }
@@ -107,11 +106,11 @@ class AddHoursDialog extends Component {
         closeFunction();
     }
 
-    handleSave = (task, data, closeFunction, event) => {        
+    handleSave = (data, closeFunction, event) => {        
         let error = false;
 
-        if (task === '') {
-            this.validateTask(task);
+        if (data.task_id === '') {
+            this.validateTask(data.task_id);
             error = true;
         }
         
@@ -126,12 +125,15 @@ class AddHoursDialog extends Component {
     
             axios.request({
                 method: 'post',
-                url: `${config.apiURL}/api/tasks/` + task + '/hours',
+                url: `${config.apiURL}/api/tasks/` + data.task_id + '/loadHours',
                 data: data
             }).then(() => {
+                closeFunction();
                 window.location.reload();
-            }).catch(err => console.log(err));
-            closeFunction();
+            }).catch(err => {
+                this.setState({ taskErrorText: err.response.data.error.message });
+            });
+            
         }
     };
     
@@ -146,13 +148,13 @@ class AddHoursDialog extends Component {
                     onClose={closeFunction}
                     aria-labelledby="form-dialog-title"
                 >
-                    <DialogTitle id="form-dialog-title">Add Hours</DialogTitle>
+                    <DialogTitle id="form-dialog-title">Carga de Horas</DialogTitle>
                     <DialogContent>
                         <Typography variant="body1" color="inherit">
-                            Complete the required fields to register your work.
+                            Complete los campos requeridos para registrar su trabajo.
                         </Typography>
                         <FormControl className={classes.formControl} >
-                            <InputLabel>Task</InputLabel>
+                            <InputLabel>Tarea</InputLabel>
                             <Select
                                 onChange={this.onTaskNameChange.bind(this)}
                                 error={!!this.state.taskErrorText}
@@ -170,7 +172,7 @@ class AddHoursDialog extends Component {
                         <TextField
                             margin="normal"
                             required={true}
-                            label="Date"
+                            label="Fecha"
                             id="date"
                             type="date"
                             inputRef={el => this.setState({ date: el})}
@@ -187,7 +189,7 @@ class AddHoursDialog extends Component {
                         <TextField
                             margin="normal"
                             required={true}
-                            label="Quantity"
+                            label="Cantidad"
                             id="quantity"
                             type="number"
                             inputRef={el => this.setState({ quantity: el })}
@@ -201,20 +203,20 @@ class AddHoursDialog extends Component {
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={this.handleCancel.bind(this, closeFunction)} color="primary">
-                            Cancel
+                            Cancelar
                         </Button>
                         <Button 
                             color="primary"
                             onClick={this.handleSave.bind(
                                     null, 
-                                    this.state.task,
                                     {
                                         "quantity": this.state.quantity,
                                         "date": this.state.date,
-                                        "worker_id": workerId
+                                        "worker_id": workerId,
+                                        "task_id": this.state.task
                                     },
                                     closeFunction)}>
-                            Save
+                            Crear
                         </Button>
                     </DialogActions>
                 </Dialog>
