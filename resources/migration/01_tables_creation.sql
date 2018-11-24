@@ -3,7 +3,8 @@ CREATE TABLE timetracker.Hour
     id int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
     quantity int(11) NOT NULL,
     date datetime NOT NULL,
-    worker_id int(11) NOT NULL
+    worker_id int(11) NOT NULL,
+    task_id int(11) NOT NULL
 );
 
 CREATE TABLE timetracker.Task
@@ -15,7 +16,6 @@ CREATE TABLE timetracker.Task
     status varchar(15) NOT NULL,
     begin_date datetime,
     end_date datetime,
-    hour_ids text,
     assigned_worker_id int(11) NOT NULL,
     CONSTRAINT Task_Worker_id_fk FOREIGN KEY (assigned_worker_id) REFERENCES timetracker.Worker (id)
 );
