@@ -10,7 +10,7 @@
     "build": "cd client_src && npm run-script build && cd ..",
     "start": "node .",
     "test": "npm run e2etest",
-    "e2etest": "./node_modules/.bin/cucumber-js test/web/features/*.feature -f json:test/report/cucumber_report.json"
+    "e2etest": "./node_modules/.bin/cucumber-js test/web/features/*.feature --exit"
   },
   "dependencies": {
     "ajv": "^6.5.5",
