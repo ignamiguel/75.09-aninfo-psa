@@ -83,8 +83,8 @@ module.exports = function(Task) {
                                 } else {
                                     const hoursQuantity = response
                                         .filter(hour => isSameDay(newHour.date, hour.date))
-                                        .reduce((accumulator, hour) => accumulator + hour.quantity, 0);
-                                    if ((hoursQuantity + newHour.quantity) <= 24) {
+                                        .reduce((accumulator, hour) => accumulator + parseInt(hour.quantity), 0);
+                                    if ((hoursQuantity + parseInt(newHour.quantity)) <= 24) {
                                         hourModel.create(newHour, function(err, cb) {
                                             if (err) {
                                                 // Unexpected error
