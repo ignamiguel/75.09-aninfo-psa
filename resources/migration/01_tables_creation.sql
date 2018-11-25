@@ -1,10 +1,21 @@
-CREATE TABLE timetracker.Hour
+CREATE TABLE timetracker.Project
+(
+    id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    title varchar(255) NOT NULL,
+    description varchar(255) NOT NULL,
+    begin_date datetime,
+    end_date datetime,
+    estimated_begin_date datetime,
+    estimated_end_date datetime,
+    estimated_cost int,
+    status varchar(15) NOT NULL
+);
+
+CREATE TABLE timetracker.Worker
 (
     id int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    quantity int(11) NOT NULL,
-    date datetime NOT NULL,
-    worker_id int(11) NOT NULL,
-    task_id int(11) NOT NULL
+    name varchar(255) NOT NULL,
+    last_name varchar(255) NOT NULL
 );
 
 CREATE TABLE timetracker.Task
@@ -17,13 +28,14 @@ CREATE TABLE timetracker.Task
     begin_date datetime,
     end_date datetime,
     assigned_worker_id int(11) NOT NULL,
-    CONSTRAINT Task_Worker_id_fk FOREIGN KEY (assigned_worker_id) REFERENCES timetracker.Worker (id)
+    project_id int(11) NOT NULL
 );
-CREATE INDEX Task_Worker_id_fk ON timetracker.Task (assigned_worker_id);
 
-CREATE TABLE timetracker.Worker
+CREATE TABLE timetracker.Hour
 (
     id int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    name varchar(255) NOT NULL,
-    last_name varchar(255) NOT NULL
+    quantity int(11) NOT NULL,
+    date datetime NOT NULL,
+    worker_id int(11) NOT NULL,
+    task_id int(11) NOT NULL
 );

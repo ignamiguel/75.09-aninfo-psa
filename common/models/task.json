@@ -41,6 +41,15 @@
         "validate": true,
         "forceId": false
       }
+    },
+    "project": {
+      "type": "belongsTo",
+      "model": "Project",
+      "foreignKey": "project_id",
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
     }
   },
   "acls": [],
