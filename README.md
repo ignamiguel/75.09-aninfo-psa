@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/ignamiguel/75.09-aninfo-psa.svg?branch=master)](https://travis-ci.com/ignamiguel/75.09-aninfo-psa)
 # PSA - TimeTracker
 
 The BE has been generated using [LoopBack](http://loopback.io).

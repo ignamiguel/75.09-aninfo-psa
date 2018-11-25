@@ -16,10 +16,8 @@ CREATE TABLE timetracker.Task
     status varchar(15) NOT NULL,
     begin_date datetime,
     end_date datetime,
-    assigned_worker_id int(11) NOT NULL,
-    CONSTRAINT Task_Worker_id_fk FOREIGN KEY (assigned_worker_id) REFERENCES timetracker.Worker (id)
+    assigned_worker_id int(11) NOT NULL
 );
-CREATE INDEX Task_Worker_id_fk ON timetracker.Task (assigned_worker_id);
 
 CREATE TABLE timetracker.Worker
 (
