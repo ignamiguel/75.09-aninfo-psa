@@ -44,7 +44,7 @@ class AddHoursDialog extends Component {
             quantityErrorText: '',
             task: '',
             date: '',
-            quantity: ''
+            quantity: 0
             
         }
     }
@@ -133,7 +133,6 @@ class AddHoursDialog extends Component {
             }).catch(err => {
                 this.setState({ taskErrorText: err.response.data.error.message });
             });
-            
         }
     };
     
