@@ -1,0 +1,42 @@
+{
+  "name": "Project",
+  "plural": "projects",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "begin_date": {
+      "type": "date"
+    },
+    "end_date": {
+      "type": "date"
+    },
+    "estimated_begin_date": {
+      "type": "date"
+    },
+    "estimated_end_date": {
+      "type": "date"
+    },
+    "estimated_cost": {
+      "type": "number"
+    },
+    "status": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

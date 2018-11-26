@@ -20,5 +20,5 @@ npm-debug.log
 package-lock.json
 client
 /*.env
-test/report
+test/report/cucumber_report.html
 test/report/cucumber_report.json
