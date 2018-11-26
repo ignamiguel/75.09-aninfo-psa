@@ -19,12 +19,12 @@ import { withStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 import moment from 'moment';
 
-const workerId = 1;
+const defaultWorkerId = 1;
 
 const styles = theme => ({
     root: {
-        marginLeft: '20%',
-        width: '70%',
+        marginLeft: '19%',
+        width: '73%',
         marginTop: theme.spacing.unit * 3,
         overflowX: 'auto',
     },
@@ -35,9 +35,9 @@ const styles = theme => ({
       right: theme.spacing.unit,
     },
     h3: {
-        marginLeft: '20%',
+        marginLeft: '19%',
         marginTop: '2%',
-        marginRight: '20%',
+        marginRight: '19%',
     },
     progress: {
         margin: theme.spacing.unit * 2,
@@ -54,6 +54,7 @@ class Hours extends Component{
             hours: [],
             hoursModal: false,
             isFetchingHours: false,
+            worker_id: {},
             task: '',
             date: '',
             quantity: ''
@@ -61,28 +62,65 @@ class Hours extends Component{
     }
 
     componentWillMount() {
-        this.getHours();
+        this.setState({ worker_id: defaultWorkerId}, () => this.getWorkers());
     }
 
-    getHours() {
-        let task_filter = '{"where":{"assigned_worker_id":"' + workerId + '"}}';
-        axios.get(`${config.apiURL}/api/tasks?filter=` + task_filter)
+    getWorker(worker_id) {
+        let worker = this.state.workers.filter(worker => (worker.id === worker_id));
+        return worker[0].name + ' ' + worker[0].last_name;
+    }
+
+    // Gets workers data and continues with getTasks
+    getWorkers() {
+        axios.get(`${config.apiURL}/api/workers`)
+            .then(workers => {
+                workers.data.forEach(worker => {
+                    this.setState({
+                        workers: [...this.state.workers, worker]
+                    });
+                });
+            })
+            .then(() => this.getTasks());
+    }
+    // Gets tasks and continues with the getProject
+    getTasks() {
+        axios.get(`${config.apiURL}/api/tasks`)
             .then(tasks => {
                     tasks.data.forEach(task => {
-                        this.setState({
-                            tasks: [...this.state.tasks, task]
-                        });
-                        let hour_filter = '{"where":{"task_id":"' + task.id + '"}}';
-                        axios.get(`${config.apiURL}/api/hours?filter=` + hour_filter)
-                            .then(hours => {
-                                hours.data.forEach(hour => {
-                                    this.setState({
-                                        hours: [...this.state.hours, {id: hour.id, name: task.name, status: task.status, date: moment(hour.date), quantity: hour.quantity}]
-                                    }, () => this.setState({ isFetchingHours: true }))
-                                })
-                            });
+                        this.getProject(task);
                     });
             });
+    }
+    // Gets project and continues with the hours
+    getProject(task) {
+        let project_filter = '{"where":{"id":"' + task.project_id + '"}}';
+        axios.get(`${config.apiURL}/api/projects?filter=` + project_filter)
+            .then(response => {
+                task.project = response.data;
+                this.setState({
+                    tasks: [...this.state.tasks, task]
+                }, () => this.getHours(task));
+        });
+    }
+    // Get hours
+    getHours(task) {
+        let hour_filter = '{"where":{"task_id":"' + task.id + '"}}';
+            axios.get(`${config.apiURL}/api/hours?filter=` + hour_filter)
+                .then(hours => {
+                    hours.data.forEach(hour => {
+                        this.setState({
+                            hours: [...this.state.hours, {
+                                id: hour.id,
+                                project: task.project[0].title,
+                                name: task.name,
+                                assigned_to: this.getWorker(task.assigned_worker_id),
+                                status: task.status,
+                                date: moment(hour.date),
+                                quantity: hour.quantity
+                            }]
+                        }, () => this.setState({ isFetchingHours: true }))
+                    })
+                });
     }
 
     handleOpenHourModal = () => {
@@ -105,7 +143,9 @@ class Hours extends Component{
                 if (groupedHours.length === 0) {
                     groupedHours.push({
                         "id": hour.id,
+                        "project": hour.project,
                         "name": hour.name,
+                        "assigned_to": hour.assigned_to,
                         "status": hour.status,
                         "date": transformedHour,
                         "quantity": hour.quantity
@@ -121,7 +161,9 @@ class Hours extends Component{
                     if (!hourFound) {
                         groupedHours.push({
                             id: hour.id,
+                            project: hour.project,
                             name: hour.name,
+                            assigned_to: hour.assigned_to,
                             status: hour.status,
                             date: transformedHour,
                             quantity: hour.quantity
@@ -147,6 +189,10 @@ class Hours extends Component{
         return groupedHours;
     }
 
+    getAvailableTasks() {
+        return this.state.tasks.filter(task => (task.assigned_worker_id === this.state.worker_id));
+    }
+
     render() {
         const { classes } = this.props;
 
@@ -156,8 +202,8 @@ class Hours extends Component{
             dialog = <AddHoursDialog
                     open={this.state.hoursModal}
                     closeFunction={this.handleCloseHourModal}
-                    tasks={this.state.tasks}
-                    workerId={workerId}
+                    tasks={this.getAvailableTasks()}
+                    workerId={this.state.worker_id}
                 />       
         } else {
             dialog = (<Dialog open={this.state.hoursModal}>
@@ -180,7 +226,9 @@ class Hours extends Component{
                     <Table className={classes.table}>
                         <TableHead>
                             <TableRow>
+                                <TableCell>Proyecto</TableCell>
                                 <TableCell>Tarea</TableCell>
+                                <TableCell>Asignada a</TableCell>
                                 <TableCell>Estado</TableCell>
                                 <TableCell>Fecha</TableCell>
                                 <TableCell>Horas</TableCell>

@@ -46,5 +46,9 @@
   "Hour": {
     "dataSource": "mysql-localhost",
     "public": true
+  },
+  "Project": {
+    "dataSource": "mysql-localhost",
+    "public": true
   }
 }
