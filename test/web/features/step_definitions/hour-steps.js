@@ -16,7 +16,8 @@ Given('no hay horas trabajadas en una tarea', function(done) {
 			description: 'Description from task without hours',
 			type: 'TEST',
 			status: 'NO HOURS',
-			assigned_worker_id: worker_id_me
+			assigned_worker_id: worker_id_me,
+			project_id: 1
 		})
 		.expect('Content-Type', /json/)
 		.end(function(err, res) {
@@ -42,7 +43,8 @@ Given('una tarea', function(table, done) {
 				type: task.type,
 				status: task.status,
 				begin_date: moment(task.begin_date).format('YYYY-MM-DD'),
-				assigned_worker_id: task.assigned_worker_id
+				assigned_worker_id: task.assigned_worker_id,
+				project_id: task.project_id
 	      	})
 	      	.expect('Content-Type', /json/)
 	      	.end(function(err, res) {
