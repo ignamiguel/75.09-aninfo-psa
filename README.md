@@ -17,11 +17,14 @@ Alternately, the same command can be executed from the root path, and it will mo
 
 ### Start MySQL
 The Application uses MySQL as datasource. A database called `timetracker` must be created before running the application among with the following tables:
+- Project
 - Worker
 - Task
 - Hour
 
-A migration script that creates the tables is available under the `/resources` folder.
+Two migration scripts are available under the `/resources` folder:
+- `01_tables_creation.sql` creates the DB tables.
+- `02_test_data.sql` creates some test data.
 
 ### Run Application
 In order to run the application, the following command must be executed: 
@@ -38,4 +41,7 @@ In order to test the E2E Flows using [Cucumber-JS](https://github.com/cucumber/c
 ```
 npm test
 ```
-A JSON report can be found under `test/report/cucumber_report.json`
+A JSON report can be found under `test/report/cucumber_report.json`. The JSON report can be transformed to a HTML by executing the following command:
+```
+npm run-script report
+```
