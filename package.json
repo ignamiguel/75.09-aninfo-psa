@@ -13,7 +13,7 @@
     "e2etest": "./node_modules/.bin/cucumber-js test/web/features/*.feature -f json:test/report/cucumber_report.json --exit",
     "report": "node test/report/report.js",
     "pree2eui": "`npm bin`/webdriver-manager update",
-    "e2eui": "`npm bin`/protractor protractor-config.js"
+    "test:e2eui": "`npm bin`/protractor config/protractor-config.js"
   },
   "dependencies": {
     "ajv": "^6.5.5",
@@ -22,6 +22,7 @@
     "cors": "^2.5.2",
     "cucumber": "^5.0.2",
     "helmet": "^3.10.0",
+    "jasmine-spec-reporter": "^4.2.1",
     "loopback": "^3.22.0",
     "loopback-boot": "^2.6.5",
     "loopback-component-explorer": "^6.2.0",

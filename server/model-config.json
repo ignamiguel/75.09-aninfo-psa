@@ -36,19 +36,19 @@
     "public": false
   },
   "Worker": {
-    "dataSource": "mysql-localhost",
+    "dataSource": "mysql",
     "public": true
   },
   "Task": {
-    "dataSource": "mysql-localhost",
+    "dataSource": "mysql",
     "public": true
   },
   "Hour": {
-    "dataSource": "mysql-localhost",
+    "dataSource": "mysql",
     "public": true
   },
   "Project": {
-    "dataSource": "mysql-localhost",
+    "dataSource": "mysql",
     "public": true
   }
 }

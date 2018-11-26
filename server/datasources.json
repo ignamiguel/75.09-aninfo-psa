@@ -3,14 +3,13 @@
     "name": "db",
     "connector": "memory"
   },
-  "mysql-localhost": {
-    "host": "localhost",
+  "mysql": {
+    "name": "mysql",
+    "connector": "loopback-connector-mysql",
+    "host": "aninfo.cxmhw1s3ue0v.us-east-1.rds.amazonaws.com",
     "port": 3306,
-    "url": "",
     "database": "timetracker",
-    "password": "password",
-    "name": "mysql-localhost",
-    "user": "root",
-    "connector": "mysql"
+    "user": "sa",
+    "password": "12345678"
   }
 }
