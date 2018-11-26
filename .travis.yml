@@ -14,3 +14,4 @@ before_install:
   - sudo service mysql restart
   - sudo mysql -h localhost -u root -ppassword -e 'CREATE DATABASE IF NOT EXISTS timetracker;'
   - sudo mysql -h localhost -u root -ppassword timetracker < resources/migration/01_tables_creation.sql
+  - sudo mysql -h localhost -u root -ppassword timetracker < resources/migration/02_test_data.sql
