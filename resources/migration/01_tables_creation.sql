@@ -27,6 +27,7 @@ CREATE TABLE timetracker.Task
     status varchar(15) NOT NULL,
     begin_date datetime,
     end_date datetime,
+    add-project-entity
     assigned_worker_id int(11) NOT NULL,
     project_id int(11) NOT NULL
 );

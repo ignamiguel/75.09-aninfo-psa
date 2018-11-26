@@ -25,8 +25,8 @@ Given('no hay horas trabajadas en una tarea', function(done) {
 			} else {
 				self.addTask(res.body);
 				self.addErrorMessage(res.errorMessage);
-				done();
 			}
+			done();
 		});
 })
 
@@ -51,8 +51,8 @@ Given('una tarea', function(table, done) {
 				} else {
 					self.addTask(res.body);
 					self.addErrorMessage(res.statusCode);
-					done();
 				}
+				done();
 			});
 	});
 })
@@ -80,8 +80,8 @@ When('{string} cargo {int} horas el día de {string}', function(who, hours, when
 					if (res.body.error !== undefined) {
 						self.addErrorMessage(res.body.error.message);
 					}
-					done();
 				}
+				done();
 	      	});
 });
 
@@ -117,8 +117,8 @@ Then('hay exactamente {int} horas trabajadas en la tarea por {string}', function
 						}
 					});
 					assert.equal(total_hours, expected_hours, 'Worked hours should be ' + expected_hours + ' but found ' + total_hours + ' instead.')
-	        		done();
 				}
+				done();
 	      	});
 })
 
@@ -142,7 +142,7 @@ Then('hay exactamente {int} horas trabajadas en la tarea', function(expected_hou
 						total_hours += hour.quantity;
 					});
 					assert.equal(total_hours, expected_hours, 'Worked hours should be ' + expected_hours + ' but found ' + total_hours + ' instead.')
-	        		done();
 				}
+				done();
 	      	});
 })
