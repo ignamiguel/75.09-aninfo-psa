@@ -17,7 +17,7 @@ describe('E2E UI Test: Add hour', function() {
       await browser.wait(EC.visibilityOf(headerLabel), timeout, "the header is not visible");
     });
     
-    it('should have a header', async () => {
+    it('should display the Hour header correctly', async () => {
       const isPresent = await headerLabel.isPresent();
       expect(isPresent).toBe(true);
     });
@@ -29,7 +29,7 @@ describe('E2E UI Test: Add hour', function() {
       await addButton.click();
     });
     
-    it('should open the "Add Hour" modal', async () => {
+    it('should open the "Add Hour" modal correctly', async () => {
       await browser.wait(EC.visibilityOf(modal), timeout, "the modal is not visible");
       const isPresent = await modal.isPresent();
       expect(isPresent).toBe(true);
