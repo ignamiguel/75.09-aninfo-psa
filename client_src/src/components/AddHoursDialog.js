@@ -106,7 +106,7 @@ class AddHoursDialog extends Component {
         closeFunction();
     }
 
-    handleSave = (data, closeFunction, event) => {        
+    handleSave = (data, closeFunction, event) => {
         let error = false;
 
         if (data.task_id === '') {

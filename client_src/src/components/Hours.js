@@ -190,7 +190,8 @@ class Hours extends Component{
     }
 
     getAvailableTasks() {
-        return this.state.tasks.filter(task => (task.assigned_worker_id === this.state.worker_id));
+        const workerId = this.state.worker_id ? this.state.worker_id : defaultWorkerId;
+        return this.state.tasks.filter(task => (task.assigned_worker_id === workerId));
     }
 
     render() {
@@ -203,7 +204,7 @@ class Hours extends Component{
                     open={this.state.hoursModal}
                     closeFunction={this.handleCloseHourModal}
                     tasks={this.getAvailableTasks()}
-                    workerId={this.state.worker_id}
+                    workerId={this.state.worker_id ? this.state.worker_id : defaultWorkerId}
                 />       
         } else {
             dialog = (<Dialog open={this.state.hoursModal}>
