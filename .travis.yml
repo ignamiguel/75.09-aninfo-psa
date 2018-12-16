@@ -32,6 +32,7 @@ script:
   - npm install
   - npm run build
   - pm run-script build
+  - cd ..
   - node . &
   - npm run test:e2eui
   
