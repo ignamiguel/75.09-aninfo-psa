@@ -12,7 +12,7 @@
     "test": "npm run e2etest",
     "e2etest": "./node_modules/.bin/cucumber-js test/web/features/*.feature -f json:test/report/cucumber_report.json --exit",
     "report": "node test/report/report.js",
-    "pree2eui": "`npm bin`/webdriver-manager update",
+    "pretest:e2eui": "`npm bin`/webdriver-manager update",
     "test:e2eui": "`npm bin`/protractor config/protractor-config.js"
   },
   "dependencies": {
