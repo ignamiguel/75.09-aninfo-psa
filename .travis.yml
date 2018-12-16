@@ -29,6 +29,7 @@ before_script:
 script:
   - npm run test
   - cd client_src
+  - npm install
   - npm run build
   - pm run-script build
   - node . &
