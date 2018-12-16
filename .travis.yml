@@ -28,7 +28,9 @@ before_script:
 
 script:
   - npm run test
-  - npm run-script build
+  - cd client_src
+  - npm run build
+  - pm run-script build
   - node . &
   - npm run test:e2eui
   
