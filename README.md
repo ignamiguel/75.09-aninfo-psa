@@ -45,3 +45,12 @@ A JSON report can be found under `test/report/cucumber_report.json`. The JSON re
 ```
 npm run-script report
 ```
+In order to run the E2E UI tests with [Protractor](http://www.protractortest.org/#/) follow these steps:
+```bash
+# Run the app in background
+node . &
+# Then run
+npm run test:e2eui
+# To stop the app, search for node process running the app and kill it with
+kill -9 <pid>
+```
