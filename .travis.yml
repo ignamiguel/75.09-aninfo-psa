@@ -8,6 +8,8 @@ addons:
     packages:
       - mysql-server
       - mysql-client
+      - google-chrome-stable
+
 before_install:
   - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('password') where User='root'; update user set plugin='mysql_native_password';FLUSH PRIVILEGES;"
   - sudo mysql_upgrade -u root -ppassword
@@ -15,3 +17,21 @@ before_install:
   - sudo mysql -h localhost -u root -ppassword -e 'CREATE DATABASE IF NOT EXISTS timetracker;'
   - sudo mysql -h localhost -u root -ppassword timetracker < resources/migration/01_tables_creation.sql
   - sudo mysql -h localhost -u root -ppassword timetracker < resources/migration/02_test_data.sql
+
+install:
+  - npm install
+
+before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - sleep 10 # give xvfb some time to start
+
+script:
+  - npm run test
+  - cd client_src
+  - npm install
+  - npm run build
+  - cd ..
+  - node . &
+  - npm run test:e2eui
+  
